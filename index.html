@@ -1,59 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Інформація про користувача</title>
-  <script>
-    function displayUserInfo() {
-      const yearOfBirth = prompt("Введіть рік народження:");
-      const city = prompt("Введіть місто проживання:");
-      const favoriteSport = prompt("Введіть улюблений вид спорту:");
-
-      if (yearOfBirth === null || city === null || favoriteSport === null) {
-        let missingInfo = "";
-        if (yearOfBirth === null) {
-          missingInfo += "дату народження";
-        }
-        if (city === null) {
-          missingInfo += missingInfo.length > 0 ? ", місто" : "місто";
-        }
-        if (favoriteSport === null) {
-          missingInfo += missingInfo.length > 0 ? ", вид спорту" : "вид спорту";
-        }
-
-        alert(`Шкода, що Ви не захотіли ввести свій(ю) ${missingInfo}.`);
-      } else {
-        const age = new Date().getFullYear() - parseInt(yearOfBirth);
-        let message = `Ваш вік: ${age}\n`;
-
-        if (city === "Київ" || city === "Вашингтон" || city === "Лондон") {
-          let country;
-          if (city === "Київ") {
-            country = "Україна";
-          } else if (city === "Вашингтон") {
-            country = "США";
-          } else {
-            country = "Велика Британія";
-          }
-          message += `Ти живеш у столиці ${country}.`;
-        } else {
-          message += `Ти живеш у місті ${city}.`;
-        }
-
-        const favoriteSports = ["футбол", "теніс", "баскетбол"];
-        const champions = ["Ліонель Мессі", "Рафаель Надаль", "Леброн Джеймс"];
-
-        if (favoriteSports.includes(favoriteSport)) {
-          const index = favoriteSports.indexOf(favoriteSport);
-          const champion = champions[index];
-          message += `\nКруто! Хочеш стати ${champion}?`;
-        }
-
-        alert(message);
-      }
-    }
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Складніші цикли</title>
 </head>
 <body>
-  <button onclick="displayUserInfo()">Введіть інформацію</button>
+|Вивести числа від 20 до 30 через пропуск, використовуючи крок 0,5 (20 20,5 21 21,5….):
+  <script>
+    var number = 20;
+    while (number <= 30) {
+        document.write(number + " ");
+        number += 0.5;
+    }
+</script>
+|Один долар коштує 27 гривень. Вивести дані з розрахунком вартості 10, 20, 30... 100 доларів:
+<script>
+  var exchangeRate = 27;
+  var dollars = 10;
+  while (dollars <= 100) {
+      var uah = dollars * exchangeRate;
+      document.write(dollars + " доларів = " + uah + " гривень<br>");
+      dollars += 10;
+  }
+</script>
+|Дане ціле число. Вивести всі цілі числа від 1 до 100, квадрат яких не перевищує числа N:
+<script>
+  var N = 100;
+  var number = 1;
+  while (number * number <= N) {
+      document.write(number + " ");
+      number++;
+  }
+</script>
+|Дане ціле число. З'ясувати, чи є воно простим:
+<script>
+  var number = 17;
+  var isPrime = true;
+  for (var i = 2; i < number; i++) {
+      if (number % i === 0) {
+          isPrime = false;
+          break;
+      }
+  }
+  if (isPrime && number > 1) {
+      document.write(number + " - просте число");
+  } else {
+      document.write(number + " - не є простим числом");
+  }
+</script>
+|Дане деяке число. Визначити, чи можна одержати це число шляхом зведення числа 3 у деякий ступінь:
+<script>
+  var number = 81;
+  var base = 3;
+  var exponent = 1;
+  var result = 1;
+  while (result < number) {
+      result = Math.pow(base, exponent);
+      if (result === number) {
+          document.write(number + " можна отримати шляхом зведення числа 3 до ступеня " + exponent);
+          break;
+      }
+      exponent++;
+  }
+  if (result > number) {
+      document.write(number + " не можна отримати шляхом зведення числа 3 до ступеня");
+  }
+</script>
 </body>
 </html>
